@@ -15,7 +15,7 @@ export const register = async (req, res) => {
         
         const existingUser = await userModel.findOne({email});
         if (existingUser) {
-            return res.status(401).json({success: false, message: 'User already exists'});
+            return res.status(409).json({success: false, message: 'User already exists'});
         }
         const hashedPassword = await bcrypt.hash(password, 10);
 
@@ -45,7 +45,6 @@ export const register = async (req, res) => {
         return res.status(201).json({success: true, message: 'User registered successfully'});
 
     } catch (error) {
-        console.log(error); // Debugging
         res.status(400).json({success: false, message: error.message});
     }
 }
@@ -64,8 +63,10 @@ export const login = async (req, res) => {
             return res.status(400).json({success: false, message: 'User does not exist'});
         }
         const isMatch = await bcrypt.compare(password, user.password);
+        
+
         if (!isMatch) {
-            return res.status(400).json({success: false, message: 'Invalid password'});
+            return res.status(401).json({success: false, message: 'Invalid password'});
         }
 
         const token = jwt.sign({id: user._id}, process.env.JWT_SECRET, {expiresIn: '7d'});
@@ -88,7 +89,7 @@ export const logout = async (req, res) => {
     try {
         res.clearCookie('token', {
             httpOnly: true,
-            // expires: new Date(0),
+            expires: new Date(0),
             secure: process.env.NODE_ENV === 'production',
             sameSite: process.env.NODE_ENV === 'production' ? 'none' : 'strict',
         });

@@ -1,7 +1,7 @@
 import jwt from 'jsonwebtoken';
 
 const userAuth = async (req, res, next) => {
-    const token = req.cookies.token; // Access the specific cookie named 'token'
+    const token = req.cookies.token;
     if (!token) {
         return res.status(401).json({success: false, message: 'Unauthorized'});
     }
@@ -9,6 +9,8 @@ const userAuth = async (req, res, next) => {
         const tokenDecode = jwt.verify(token, process.env.JWT_SECRET);
         
         if (tokenDecode.id) {
+            // Initialize req.body if it doesn't exist
+            if (!req.body) req.body = {};
             req.body.userId = tokenDecode.id;  // Attach userId to request body
         } else {
             return res.status(401).json({success: false, message: 'Unauthorized'});
@@ -16,6 +18,7 @@ const userAuth = async (req, res, next) => {
 
         next();
     } catch (error) {
+        console.log("Auth Error:", error);
         return res.status(401).json({success: false, message: error.message});
     }
 }
