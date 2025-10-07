@@ -1,0 +1,47 @@
+<!-- save as logo.svg -->
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 120 120" width="120" height="120" role="img" aria-labelledby="logoTitle logoDesc">
+  <title id="logoTitle">NerdTech Authentication</title>
+  <desc id="logoDesc">Shield with lock and checkmark representing secure authentication</desc>
+
+  <!-- CSS variables for easy theming -->
+  <style>
+    :root{
+      --bg: #ffffff;
+      --primary: #0b74ff;   /* main brand color */
+      --accent: #00c853;    /* check/confirm color */
+      --stroke: #0b2340;    /* dark stroke */
+    }
+  </style>
+
+  <!-- Outer circle background (optional, gives badge feel) -->
+  <circle cx="60" cy="60" r="58" fill="var(--bg)" stroke="none" />
+
+  <!-- Shield -->
+  <path d="M60 18
+           C42 18 28 30 28 48
+           v18
+           c0 16 20 28 32 34
+           c12-6 32-18 32-34
+           V48
+           C92 30 78 18 60 18Z"
+        fill="var(--primary)" stroke="var(--stroke)" stroke-width="2" />
+
+  <!-- Lock body -->
+  <rect x="44" y="46" width="32" height="26" rx="4" ry="4" fill="#fff" stroke="var(--stroke)" stroke-width="1.5"/>
+
+  <!-- Lock shackle -->
+  <path d="M56 46
+           V40
+           A8 8 0 0 1 72 40
+           V46"
+        fill="none" stroke="var(--stroke)" stroke-width="3" stroke-linecap="round"/>
+
+  <!-- Keyhole (circle + small rectangle) -->
+  <circle cx="60" cy="58" r="3" fill="var(--primary)"/>
+  <rect x="58" y="61" width="4" height="6" rx="1" fill="var(--primary)"/>
+
+  <!-- Checkmark overlay to indicate verified/authenticated -->
+  <path d="M46 76 L56 86 L78 60"
+        fill="none" stroke="var(--accent)" stroke-width="5" stroke-linecap="round" stroke-linejoin="round" />
+
+</svg>

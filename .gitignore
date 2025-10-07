@@ -1,62 +1,21 @@
-# Node.js dependencies
-/node_modules
-/.pnp
-.pnp.js
-
-# Logs
-logs
-*.log
-npm-debug.log*
-yarn-debug.log*
-yarn-error.log*
-pnpm-debug.log*
-
-# Runtime data
-pids
-*.pid
-*.seed
-*.pid.lock
-
-# Next.js build output
-/.next
-/out
-/.vercel
+# Dependencies
+node_modules/
+/server/node_modules/
+/client/node_modules/
 
 # Environment files
 .env
 .env.local
-.env.development.local
-.env.test.local
-.env.production.local
-
-# OS generated files
-.DS_Store
-Thumbs.db
-
-# IDE files
-.vscode/
-.idea/
-*.sublime-workspace
-*.sublime-project
-
-# Misc
-coverage/
-dist/
-
-
-/server/node_modules
+.env.development
+.env.production
 /server/.env
-/server/.next
-/server/out
-/server/.vercel
-/server/coverage
-/server/dist
-/server/logs
-/server/pids
-/server/*.log
-/server/*.pid
-/server/*.seed  
+/client/.env
 
+# Build outputs
+/dist/
+/client/dist/
+/server/dist/
+/client/dist-ssr/
 
 # Logs
 logs
@@ -66,11 +25,6 @@ yarn-debug.log*
 yarn-error.log*
 pnpm-debug.log*
 lerna-debug.log*
-
-node_modules
-dist
-dist-ssr
-*.local
 
 # Editor directories and files
 .vscode/*
@@ -83,31 +37,31 @@ dist-ssr
 *.sln
 *.sw?
 
-/client/node_modules
+# Testing
+/coverage
+/server/coverage
+/client/coverage
 
+# Production
+/build
+/client/build
+/server/build
 
-#Logs
-/clientlogs
-/client*.log
-/clientnpm-debug.log*
-/clientyarn-debug.log*
-/clientyarn-error.log*
-/clientpnpm-debug.log*
-/clientlerna-debug.log*
-/client
-/clientnode_modules
-/clientdist
-/clientdist-ssr
-/client*.local
-/client
-#Editor directories and files
-/client.vscode/*
-/client!.vscode/extensions.json
-/client.idea
-/client.DS_Store
-/client*.suo
-/client*.ntvs*
-/client*.njsproj
-/client*.sln
-/client*.sw?
-/client
+# Misc
+.DS_Store
+.env.local
+.env.development.local
+.env.test.local
+.env.production.local
+
+# Debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Optional
+*.pem
+.vercel
+.next
+*.tsbuildinfo
+next-env.d.ts
