@@ -25,6 +25,7 @@ app.use(cors({
             "http://localhost:5174", 
             "http://localhost:5175",
             "https://authentication-system-frontend-d72x.onrender.com",
+            "https://authentication-system-frontend-d72x.onrender.com/",
             "https://authentication-system-5n81.onrender.com"
         ];
         
@@ -34,10 +35,12 @@ app.use(cors({
             callback(new Error('Not allowed by CORS'));
         }
     },
+    methods: ["GET", "POST", "PUT", "DELETE", "OPTIONS"], // ✅ include OPTIONS
+    allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
-    methods: ["GET", "POST", "PUT", "DELETE"],
-    allowedHeaders: ["Content-Type", "Authorization"]
 }));
+app.options("*", cors());
+
 
 // API Routes
 app.get('/', (req, res) => {
