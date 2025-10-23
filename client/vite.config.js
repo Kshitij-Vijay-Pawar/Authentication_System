@@ -17,4 +17,16 @@ export default defineConfig({
     tailwindcss(),
 
   ],
+  build: {
+    rollupOptions: {
+      output: {
+        manualChunks: undefined,
+      },
+    },
+    target: 'esnext',
+    minify: 'esbuild',
+  },
+  optimizeDeps: {
+    include: ['react', 'react-dom', 'react-router-dom']
+  }
 });
