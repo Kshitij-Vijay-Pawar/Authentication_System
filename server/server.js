@@ -39,7 +39,8 @@ app.use(cors({
     allowedHeaders: ["Content-Type", "Authorization"],
     credentials: true,
 }));
-app.options("*", cors());
+app.options(/.*/, cors());
+
 
 
 // API Routes
